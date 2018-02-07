@@ -1,0 +1,6 @@
+framework module Pods_nbackTests {
+  umbrella header "Pods-nbackTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
