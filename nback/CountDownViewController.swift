@@ -22,6 +22,9 @@ class CountDownViewController: UIViewController,CAAnimationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // 背景
+        setBackgroundColor(view: self.view)
+
         // Do any additional setup after loading the view.
         // カウントダウン数値ラベル設定
         _countNumberLabel = UILabel(frame: CGRect(x:0, y:0, width:self.view.frame.width, height:self.view.frame.height))
@@ -29,11 +32,13 @@ class CountDownViewController: UIViewController,CAAnimationDelegate {
         // 中心揃え
         _countNumberLabel.textAlignment = NSTextAlignment.center
         _countNumberLabel.baselineAdjustment = UIBaselineAdjustment.alignCenters
+        // 色
+        _countNumberLabel.textColor = UIColor.white
         self.view.addSubview(_countNumberLabel)
         
         _circleView = UIView(frame : CGRect(x:(self.view.frame.width/2)-100, y:(self.view.frame.height/2)-100, width:200, height:200))
-        _circleView.layer.addSublayer(drawCircle(viewWidth:_circleView.frame.width, strokeColor: UIColor(red:0.0,green:0.0,blue:0.0,alpha:0.2)))
-        _circleView.layer.addSublayer(drawCircle(viewWidth:_circleView.frame.width, strokeColor: UIColor(red:0.0,green:0.0,blue:0.0,alpha:1.0)))
+        _circleView.layer.addSublayer(drawCircle(viewWidth:_circleView.frame.width, strokeColor: UIColor(red:1.0,green:1.0,blue:1.0,alpha:0.2)))
+        _circleView.layer.addSublayer(drawCircle(viewWidth:_circleView.frame.width, strokeColor: UIColor(red:1.0,green:1.0,blue:1.0,alpha:1.0)))
         self.view.addSubview(_circleView)
     }
     

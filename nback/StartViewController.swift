@@ -51,7 +51,9 @@ class StartViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        // 背景
+        setBackgroundColor(view: self.view)
+
         start()
     }
     
@@ -102,22 +104,56 @@ class StartViewController: UIViewController {
             }
         }
         // 問題設定
-        self.positions = []
+        // 初期化
         for _ in 0..<problemNum {
             self.answerPositions.append(false)
             self.answerSounds.append(false)
-            // 位置
-            var r = arc4random_uniform(UInt32(self.cells.count))
-            self.positions.append(Int(r))
-            // サウンド（面倒だからどのタイプでも設定だけしておいて再生はさせない）
-            r = arc4random_uniform(UInt32(self.soundList.count))
-            self.sounds.append(Int(r))
+        }
+        // 位置（最低3つ以上マッチする問題にする）
+        while(true) {
+            self.positions = []
+            var matchNum = 0
+            for _ in 0..<problemNum {
+                // 位置
+                let r = arc4random_uniform(UInt32(self.cells.count))
+                self.positions.append(Int(r))
+            }
+            // マッチする問題か
+            for i in self.N..<self.positions.count {
+                if (self.positions[i - self.N] == self.positions[i]) {
+                    //マッチ
+                    matchNum += 1
+                }
+            }
+            if (matchNum > 2) {
+                break
+            }
+        }
+        // サウンド（最低3つ以上マッチする問題にする）
+        while(true) {
+            self.sounds = []
+            var matchNum = 0
+            for _ in 0..<problemNum {
+                // サウンド（面倒だからどのタイプでも設定だけしておいて再生はさせない）
+                let r = arc4random_uniform(UInt32(self.soundList.count))
+                self.sounds.append(Int(r))
+            }
+            // マッチする問題か
+            for i in self.N..<self.sounds.count {
+                if (self.sounds[i - self.N] == self.sounds[i]) {
+                    //マッチ
+                    matchNum += 1
+                }
+            }
+            if (matchNum > 2) {
+                break
+            }
         }
         // タスク開始
 //        task()
         // 2回目移行はタイマーで呼び出す
         self.timer = Timer.scheduledTimer(
-            timeInterval: 1.5,
+            timeInterval: 0.2,
             target: self,
             selector: #selector(self.task),
             userInfo: nil,

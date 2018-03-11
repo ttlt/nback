@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import GoogleMobileAds
+//import GoogleMobileAds
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -37,10 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            self.scoreTable = self.userDefaults.dictionary(forKey: "score") as! Dictionary<String, Array<Any>>
             self.scoreTable = self.userDefaults.dictionary(forKey: "score") as! Dictionary<String, Array<Any>> as! Dictionary<String, Array<Dictionary<String, Any>>>
         }
-        // Initialize the Google Mobile Ads SDK.
-        // Sample AdMob app ID: ca-app-pub-3940256099942544~1458002511
-        GADMobileAds.configure(withApplicationID: "ca-app-pub-5587634884366709~8284509314")
+//        // Initialize the Google Mobile Ads SDK.
+//        // Sample AdMob app ID: ca-app-pub-3940256099942544~1458002511
+//        GADMobileAds.configure(withApplicationID: "ca-app-pub-5587634884366709~8284509314")
 
+        // AdMob広告
+        FirebaseApp.configure()
+        
         return true
     }
 

@@ -7,19 +7,24 @@
 //
 
 import UIKit
+import GoogleMobileAds
+
 
 class ResultViewController: UIViewController {
     
     var appDelegate:AppDelegate = UIApplication.shared.delegate as!     AppDelegate
-    
     
     @IBOutlet weak var settingLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var positionScoreLabel: UILabel!
     @IBOutlet weak var soundScoreLabel: UILabel!
     
+    @IBOutlet weak var bannerView: GADBannerView!
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // 背景
+        setBackgroundColor(view: self.view)
 
         // Do any additional setup after loading the view.
         var settingLabel = self.settingLabel.text
@@ -49,6 +54,11 @@ class ResultViewController: UIViewController {
         } else {
             print ("unexpected error!")
         }
+        // AdMob広告設定
+        bannerView.adUnitID = "ca-app-pub-5587634884366709/3770549232"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self as? GADBannerViewDelegate
     }
 
     override func didReceiveMemoryWarning() {

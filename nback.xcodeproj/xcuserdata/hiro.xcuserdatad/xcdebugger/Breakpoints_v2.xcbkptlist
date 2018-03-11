@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "nback/StartViewController.swift"
-            timestampString = "537614592.308416"
+            timestampString = "541870067.874299"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "calcScore()"
             landmarkType = "7">
          </BreakpointContent>
